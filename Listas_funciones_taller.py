@@ -1,4 +1,4 @@
-print("TALLER DE LISTAS")
+#print("TALLER DE LISTAS")
 
 # print("Ejercicio 1")
 
@@ -13,7 +13,7 @@ print("TALLER DE LISTAS")
 
 # nombres=["Ana", "Luis"]
 
-# name= input("Ingresé un nombre: ")
+# name= input("Ingresé un nombre: ")#programa
 
 # nombres.append(name)
 
@@ -99,30 +99,30 @@ print("TALLER DE LISTAS")
 
 # print(lista_yo)
 
-print("Ejercicio 13")
+# print("Ejercicio 13")
 
-lista10= ["manzana", "pera", "uva"]
+# lista10= ["manzana", "pera", "uva"]
 
-print(f"La posición de pera es {lista10.index("pera")}")
+# print(f"La posición de pera es: {lista10.index("pera")}")
 
-print("Ejercicio 14")
+# print("Ejercicio 14")
 
-numeros=[4,5,6,7]
+# numeros=[4,5,6,7]
 
-print(f"La posición de 6 es: {numeros.index(6)}")
+# print(f"La posición de 6 es: {numeros.index(6)}")
 
-print("Ejercicio 15")
+# print("Ejercicio 15")
 
-lista11= [3,1,3,5,3]
+# lista11= [3,1,3,5,3]
 
-print(f"El número de veces que aparece 3 es: {lista11.count(3)}")
+# print(f"El número de veces que aparece 3 es: {lista11.count(3)}")
 
-print("Ejercicio 16")
+# print("Ejercicio 16")
 
-lista12= ["a","b","a","c","a"]
+# lista12= ["a","b","a","c","a"]
 
 
-print(f"el número de veces que aparece a en la lista es: {lista12.count("a")}")
+# print(f"el número de veces que aparece a en la lista es: {lista12.count("a")}")
 
 # print("Ejercicio 17")
 

@@ -122,7 +122,7 @@
 # print(f"Ejercicio 21")
 # nombre_completo= input("Ingrese su nombre completo: ")
 
-# print(f"Su nombre completo es: {nombre_completo}")
+# print(f"Su nombre completo es: {nombre_completo}") # programa
 
 
 
