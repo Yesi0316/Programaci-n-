@@ -156,14 +156,23 @@
 
 # print(f"Sus precios con el IVA son: {result}")
 
-print("Ejercicio 12")
+# print("Ejercicio 12")
 
-a= int(input("Ingresé un número: "))
-b= int(input("Ingresé un número: "))
+# a= int(input("Ingresé un número: "))
+# b= int(input("Ingresé un número: "))
 
-tuplab=(a+b,a-b,b*a,a/b)
+# tuplab=(a+b,a-b,b*a,a/b)
 
-print(f"La suma de los números es: {tuplab[0]}\n la resta es: {tuplab[1]}\n la multiplicación es: {tuplab[2]}\n la división es: {tuplab[3]} ")
+# print(f"La suma de los números es: {tuplab[0]}\n la resta es: {tuplab[1]}\n la multiplicación es: {tuplab[2]}\n la división es: {tuplab[3]} ")
+
+print("Ejercicio 13")
+estudiantes= {"Áaron": 5, "Alejandra": 3, "Santiago": 3.2}
+
+op_dicc= (estudiantes["Áaron"]+estudiantes["Alejandra"]+ estudiantes["Santiago"])/3
+
+print(f"El promedio es: {op_dicc}")
+
+
 
 
 
