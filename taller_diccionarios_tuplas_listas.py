@@ -220,43 +220,61 @@
 
 # print(f"sus doláres en: \n Euros: {conver_di[0]} \n Pesos colombianos: {conver_di[1]} \n Yenes japoneses:{conver_di[2]}")
 
-print("Ejercicio 18")
+# print("Ejercicio 18")
 
-name1= input("Ingresé el nombre del producto1: ")
-name2=input("Ingresé el nombre del producto2: ")
-name3= input("Ingresé el nombre del producto3: ")
+# name1= input("Ingresé el nombre del producto1: ")
+# name2=input("Ingresé el nombre del producto2: ")
+# name3= input("Ingresé el nombre del producto3: ")
 
-p4=  int(input("Ingresé la cantidad de productos vendidos del producto 1: "))
-p5= int(input("Ingresé la cantidad de productos vendidos del producto 2: "))
-p6=int(input("Ingresé la cantidad de productos vendidos del producto 3: ")) 
+# p4=  int(input("Ingresé la cantidad de productos vendidos del producto 1: "))
+# p5= int(input("Ingresé la cantidad de productos vendidos del producto 2: "))
+# p6=int(input("Ingresé la cantidad de productos vendidos del producto 3: ")) 
 
-vent= {name1:p4, name2:p5, name3:p6}
+# vent= {name1:p4, name2:p5, name3:p6}
 
-suma= vent("name1")+vent("name2")+vent("name3") 
-print(f"La cantidad de productos vendidos es: {suma}")
+# suma= vent[name1]+vent[name2]+vent[name3]
 
+# print(f"La cantidad de productos vendidos es: {suma}")
 
+# print("Ejercicio 19")
 
+# temperaturas= [float(input("Ingresé una temperatura: ")),float(input("Ingresé una temperatura: ")),float(input("Ingresé una temperatura: ")),float(input("Ingresé una temperatura: ")),float(input("Ingresé una temperatura: ")),float(input("Ingresé una temperatura: ")),float(input("Ingresé una temperatura: ")),float(input("Ingresé una temperatura: ")),float(input("Ingresé una temperatura: ")),float(input("Ingresé una temperatura: ")) ]
 
+# temp_mayor= [(temperaturas[0]*(temperaturas[0]>30)),(temperaturas[1]*(temperaturas[1]>30)),(temperaturas[2]*(temperaturas[2]>30)),(temperaturas[3]*(temperaturas[3]>30)),(temperaturas[4]*(temperaturas[4]>30)),(temperaturas[5]*(temperaturas[5]>30)),(temperaturas[6]*(temperaturas[6]>30)),(temperaturas[7]*(temperaturas[7]>30)),(temperaturas[8]*(temperaturas[8]>30)),(temperaturas[9]*(temperaturas[9]>30)),0 ] #con el 0 al final se evita el error de que no haya 0 paara quitar
+# temp_menor= [(temperaturas[0]*(temperaturas[0]<10)),(temperaturas[1]*(temperaturas[1]<10)),(temperaturas[2]*(temperaturas[2]<10)),(temperaturas[3]*(temperaturas[3]<10)),(temperaturas[4]*(temperaturas[4]<10)),(temperaturas[5]*(temperaturas[5]<10)),(temperaturas[6]*(temperaturas[6]<10)),(temperaturas[7]*(temperaturas[7]<10)),(temperaturas[8]*(temperaturas[8]<10)),(temperaturas[9]*(temperaturas[9]<10)),0 ]
 
+# temp_mayor.sort() #Ordena la lista
+# print(temp_mayor)
+# i_m=temp_mayor.index(0) #Busca el primer 0
+# i_m2=temp_mayor.index(0,temp_mayor.count(0)-1) #Busca el último 0
+# del temp_mayor[i_m:i_m2+1] #Quita todos los 0
 
+# temp_menor.sort()
+# print(temp_menor)
+# i_m3=temp_menor.index(0)
+# i_m4=(temp_menor.index(0,temp_menor.count(0)-1)+1)+i_m3 #Se le suma el index de los otros 0 para eliminar los negativos
+# del temp_menor[i_m3:i_m4]
+# 41
+# print(f"Las temperaturas mayores a 30 son: {temp_mayor}\n Las temperaturas menores a 10 son {temp_menor}")
 
+print("Ejercicio 20")
 
+actualizar=[278.9,8219828.9989,3783.93,2390.78,234.32]
 
+print(f"Estos son los precios: {actualizar}")
 
+bus= float(input("Ingresé un salario para eliminar: "))
 
+busqueda=actualizar.index(bus)
 
+actualizar.pop(busqueda)
 
+agre= float(input("Agregue un salario: "))
 
+actualizar.append(agre)
+actualizar.sort
 
-
-
-
-
-
-
-
-
+print(f"La lista de precios actualizada es: {actualizar}")
 
 
 
