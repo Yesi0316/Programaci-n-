@@ -165,13 +165,75 @@
 
 # print(f"La suma de los números es: {tuplab[0]}\n la resta es: {tuplab[1]}\n la multiplicación es: {tuplab[2]}\n la división es: {tuplab[3]} ")
 
-print("Ejercicio 13")
-estudiantes= {"Áaron": 5, "Alejandra": 3, "Santiago": 3.2}
+# print("Ejercicio 13")
+# estudiantes= {"Áaron": float(input("Ingresé la nota de Áaron: ")), "Alejandra": float(input("Ingresé la nota de Alejandra: ")),"Santiago":float(input("Ingresé la nota de Áaron: "))}
 
-op_dicc= (estudiantes["Áaron"]+estudiantes["Alejandra"]+ estudiantes["Santiago"])/3
+# op_dicc= (estudiantes["Áaron"]+estudiantes["Alejandra"]+ estudiantes["Santiago"])/3
 
-print(f"El promedio es: {op_dicc}")
+# print(f"El promedio es: {op_dicc}")
 
+# print("Ejercicio 14")
+
+# salarios=[int(input("Ingresé salario: ")),int(input("Ingresé salario: ")),int(input("Ingresé salario: " )),int(input("Ingresé salario: " )),int(input("Ingresé salario: " ))]
+# aum_salario=[]
+# aum_salario.append(salarios[0]+((salarios[0]*10)/100))
+# aum_salario.append(salarios[1]+((salarios[1]*10)/100))
+# aum_salario.append(salarios[2]+((salarios[2]*10)/100))
+# aum_salario.append(salarios[3]+((salarios[3]*10)/100))
+# aum_salario.append(salarios[4]+((salarios[4]*10)/100))
+
+# print(f"Los salarios aumentados un 10%:\n {aum_salario[0]}\n {aum_salario[1]}\n {aum_salario[2]}\n {aum_salario[3]}\n {aum_salario[4]} ")
+
+# print("Ejercicio 15")
+
+# sin_imp= {"pan": 98, "arroz": 89, "aceite":50, "azucar": 12, "cafe": 780}
+# con_imp= [ ]
+
+# imp1= float(input("Ingresé el impuesto para agregar al pan: " ))
+# imp2= float(input("Ingresé el impuesto para agregar al arroz: " ))
+# imp3= float(input("Ingresé el impuesto para agregar al aceite: " ))
+# imp4= float(input("Ingresé el impuesto para agregar a la azúcar: " ))
+# imp5= float(input("Ingresé el impuesto para agregar al café: " ))
+
+# con_imp.append(sin_imp["pan"]+ ((sin_imp["pan"]*imp1)/ 100))
+# con_imp.append(sin_imp["arroz"]+ ((sin_imp["arroz"]*imp1)/ 100))
+# con_imp.append(sin_imp["aceite"]+ ((sin_imp["aceite"]*imp1)/ 100))
+# con_imp.append( sin_imp["azucar"]+ ((sin_imp["azucar"]*imp1)/ 100))
+# con_imp.append( sin_imp["cafe"]+ ((sin_imp["cafe"]*imp1)/ 100))
+
+# print(f"El precio de los productos más los impuestos son: \n Pan: {con_imp[0]}  \n arroz: {con_imp[1]}  \n aceite: {con_imp[2]}  \n azúcar: {con_imp[3]} \n café: {con_imp[4]}")
+
+# print("Ejercicio 16")
+
+# lis_eda=[int(input("Ingrése una edad: ")), int(input("Ingrése una edad: ")), int(input("Ingrése una edad: ")), int(input("Ingrése una edad: "))] 
+
+# mayor= (lis_eda[0]>=18)+(lis_eda[1]>=18)+(lis_eda[2]>=18)+(lis_eda[3]>=18)
+# menor= len(lis_eda)-mayor
+
+# print(f"En este grupo hay:\n mayores de edad: {mayor} \n menores de edad: {menor}  ")
+
+# print("Ejercicio 17")
+
+# dinero= float(input("Ingrese un cantidad de dinero (dólares):"))
+
+# conver_di= ((dinero*0.85), (dinero*4088.25), (dinero*144.88))
+
+# print(f"sus doláres en: \n Euros: {conver_di[0]} \n Pesos colombianos: {conver_di[1]} \n Yenes japoneses:{conver_di[2]}")
+
+print("Ejercicio 18")
+
+name1= input("Ingresé el nombre del producto1: ")
+name2=input("Ingresé el nombre del producto2: ")
+name3= input("Ingresé el nombre del producto3: ")
+
+p4=  int(input("Ingresé la cantidad de productos vendidos del producto 1: "))
+p5= int(input("Ingresé la cantidad de productos vendidos del producto 2: "))
+p6=int(input("Ingresé la cantidad de productos vendidos del producto 3: ")) 
+
+vent= {name1:p4, name2:p5, name3:p6}
+
+suma= vent("name1")+vent("name2")+vent("name3") 
+print(f"La cantidad de productos vendidos es: {suma}")
 
 
 

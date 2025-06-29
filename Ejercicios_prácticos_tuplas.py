@@ -1,4 +1,4 @@
-print ("Ejercicios practicos"/n "Ejercicio 1-5" )
+print ("Ejercicios practicos\n Ejercicio 1-5" )
 
 # print("Ejercicio 1-5")
 
