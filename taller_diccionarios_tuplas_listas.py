@@ -257,24 +257,27 @@
 # 41
 # print(f"Las temperaturas mayores a 30 son: {temp_mayor}\n Las temperaturas menores a 10 son {temp_menor}")
 
-print("Ejercicio 20")
+# print("Ejercicio 20")
 
-actualizar=[278.9,8219828.9989,3783.93,2390.78,234.32]
+# actualizar=[278.9,8219828.9989,3783.93,2390.78,234.32]
 
-print(f"Estos son los precios: {actualizar}")
+# print(f"Estos son los precios: {actualizar}")
 
-bus= float(input("Ingresé un salario para eliminar: "))
+# bus= float(input("Ingresé un salario para eliminar: "))
 
-busqueda=actualizar.index(bus)
+# busqueda=actualizar.index(bus)
 
-actualizar.pop(busqueda)
+# actualizar.pop(busqueda)
 
-agre= float(input("Agregue un salario: "))
+# agre= float(input("Agregue un salario: "))
 
-actualizar.append(agre)
-actualizar.sort
+# actualizar.append(agre)
+# actualizar.sort
 
-print(f"La lista de precios actualizada es: {actualizar}")
+# print(f"La lista de precios actualizada es: {actualizar}")
+
+
+#
 
 
 
