@@ -244,13 +244,11 @@
 # temp_menor= [(temperaturas[0]*(temperaturas[0]<10)),(temperaturas[1]*(temperaturas[1]<10)),(temperaturas[2]*(temperaturas[2]<10)),(temperaturas[3]*(temperaturas[3]<10)),(temperaturas[4]*(temperaturas[4]<10)),(temperaturas[5]*(temperaturas[5]<10)),(temperaturas[6]*(temperaturas[6]<10)),(temperaturas[7]*(temperaturas[7]<10)),(temperaturas[8]*(temperaturas[8]<10)),(temperaturas[9]*(temperaturas[9]<10)),0 ]
 
 # temp_mayor.sort() #Ordena la lista
-# print(temp_mayor)
 # i_m=temp_mayor.index(0) #Busca el primer 0
 # i_m2=temp_mayor.index(0,temp_mayor.count(0)-1) #Busca el último 0
 # del temp_mayor[i_m:i_m2+1] #Quita todos los 0
 
 # temp_menor.sort()
-# print(temp_menor)
 # i_m3=temp_menor.index(0)
 # i_m4=(temp_menor.index(0,temp_menor.count(0)-1)+1)+i_m3 #Se le suma el index de los otros 0 para eliminar los negativos
 # del temp_menor[i_m3:i_m4]
