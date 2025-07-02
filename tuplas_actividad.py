@@ -49,6 +49,8 @@
 # print(f"Su nombre es: {tu[0]}, tu apellido es: {tu[1]}, tu número de identidad es: {tu[2]}")
 
 
+#he documentado todo este arcivo .py
+
 
 
 
