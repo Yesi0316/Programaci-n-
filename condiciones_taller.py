@@ -130,3 +130,33 @@
 
 # else: 
 #     print("No es divisible entre ningun número")
+
+# print("Ejercicio 11")
+
+# lista= [float(input("Ingrese un número: ")),float(input("Ingrese un número: ")),float(input("Ingrese un número: ")),float(input("Ingrese un número: ")),float(input("Ingrese un número: "))]
+
+# if lista[2]>10:
+#     print(f"El número de la lista {lista[2]} es mayor a 10")
+# elif lista[2]<=10:
+#     print(f"El número de la lista {lista[2]} es menor o igual a 10")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
