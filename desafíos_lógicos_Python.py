@@ -243,8 +243,8 @@
 
 # ciudad= input("Ingrese el nombre de una ciudad: ")
 # ciudades= ("Bogóta","Berlín","Caracas","Kabul", "Ciudad de Panáma")
-# if ciudad==ciudades[0] or ciudades[1] or ciudades[2] or ciudades[3] or ciudades[4]:
-#     print("Es una ciudad capital")
+# if ciudad==ciudades[0]or ciudad==ciudades[1]or ciudad==ciudades[2]or ciudad==ciudades[3]or ciudad==ciudades[4]:
+#     print("Es una ciudad Capital")
 # else:
 #     print("Es una ciudad secundaria")
 
@@ -275,13 +275,13 @@
 
 # print("Ejercicio 20")
 
-# nota= float(input("Ingresé su nota (0-100): "))
+# nota3= float(input("Ingresé su nota (0-100): "))
 
-# if nota<50:
+# if nota3<50:
 #     print("Insuficiente")
-# elif nota>=50 and nota<=79:
+# elif nota3>=50 and nota3<=79:
 #     print("Aceptable")
-# elif nota>=80 and nota<=100:
+# elif nota3>=80 and nota3<=100:
 #     print("Excelencia")
 
 # else: 
