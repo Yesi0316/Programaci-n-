@@ -220,37 +220,54 @@
 # else:
 #     print("Las tplas son diferentes")
 
+# print("Ejercicio 21")
 
+# datos_personales= {"nombre":input("Ingresè su nombre: "), "edad":int(input("Ingresé su edad:"))}
 
+# if datos_personales["edad"] >= 18:
+#     print("Eres mayor de edad")
+# else:
+#     print("Eres menor de edad")
 
+# print("Ejercicio 22")
 
+# datos_personales2= {"nombre":input("Ingresè su nombre: "), "edad":int(input("Ingresé su edad:"))}
 
+# if datos_personales2["edad"] >= 18:
+#    datos_personales2["edad"]=21
+#    print(f"Sus datos son: {datos_personales2}")
+# else:
+#    print(f"Sus datos son: {datos_personales2}")
 
+# print("Ejercicio 23")
 
+# datos_personales3= {"nombre":input("Ingresè su nombre: ")}
+# pregunta= input("¿Deseas agregar tu ciudad?:").lower()
 
+# if pregunta=="si":
+#     datos_personales3["ciudad"]=input("Ingresé la ciudad:")
+#     print(f"Sus datos son: {datos_personales3}")
+# else:
+#      print(f"Sus datos son: {datos_personales3}")
 
+# print("Ejercicio 24")
 
+# precios= {"producto": input("Ingresé el nombre de un producto: "), "precio":float(input("Ingresé el precio del producto: "))}
 
+# if precios.get("precios")==None:
+#     print(f"El precio del producto es: {precios["precio"]}")
+# else:
+#     print("No hay precio")
 
+# print("Ejercicio 25")
+# producto= input("Ingresé el nombre del producto: ").lower()
 
+# inventario= {"pan":1200,"leche":200}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# if producto in list(inventario.keys()):
+#     print(f"El precio es {inventario[producto]}")
+# else:
+#     print("No esta el producto")
 
 
 
