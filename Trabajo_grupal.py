@@ -53,7 +53,7 @@ cat_p5= input("Ingresé la categoría del producto: ")
 can_p5= int(input("Ingresé la cantidad del producto que hay: "))
 pre_p5= float(input("Ingresé el precio del producto: "))
 
-producto5= {"nombre":name_p1, "categoría": cat_p1,"cantidad en stock": can_p1, "precio unitario": pre_p1}
+producto5= {"nombre":name_p5, "categoría": cat_p5,"cantidad en stock": can_p5, "precio unitario": pre_p5}
 
 productos.append(producto5)
 
