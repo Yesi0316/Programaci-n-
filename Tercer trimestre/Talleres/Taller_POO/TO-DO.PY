@@ -1,6 +1,4 @@
 print("Ejercicio POO - To-Do List")
-
-nueva_tarea= None
 #Lista de tareas
 lista_tareas = []
 class Tarea:
@@ -14,14 +12,9 @@ class Tarea:
     def mostrar_tarea(self):
         print("-".center(50,"-"))
         print(f"Tarea: {self.nombre_tarea} \n Descripción: {self.descripcion} \n Prioridad: {self.prioridad} \n Estado: {self.estado}")
-        print("-".center(50,"-"))
     #segundo método
-    def cambiar_estado(self):
-        nuevo_estado = input("Ingrese el nuevo estado de la tarea (Pendiente/En progreso/Completada): ")
-        self.estado = nuevo_estado
-        print(f"El estado de la tarea {self.nombre_tarea} ha sido cambiado a: {self.estado}")
-    #tercer método
-    def agregar_tarea(self):
+    @classmethod
+    def agregar_tarea(cls):
         nombre_tarea = input("Ingrese el nombre de la tarea: ")
         descripcion = input("Ingrese la descripción de la tarea: ")
         prioridad = input("Ingrese la prioridad de la tarea (Alta/Media/Baja): ")
@@ -39,14 +32,16 @@ class Tarea_colegio(Tarea):
         #primer método clase hija 1
     def mostrar_tarea(self):
         super().mostrar_tarea() #super permite que la clase hija llame a los métodos o atributos de la clase padre para no volver a escribir todo
-        print(f"Materia: {self.materia} \n Fecha de entrega: {self.fecha_entrega}")
-        print("-".center(50,"-"))
+        print(f"\n Materia: {self.materia} \n Fecha de entrega: {self.fecha_entrega}")
         #segundo método de la clase hija 1
-    def cambiar_estado(self):
-        super().cambiar_estado()
-    #tercer método de la clase hija 1
-    def agregar_tarea(self):
-        super().agregar_tarea()
+    @classmethod
+    def agregar_tarea(cls):
+        nombre_tarea, descripcion, prioridad, estado = super().agregar_tarea()
+        materia = input("Ingrese la materia de la tarea: ")
+        fecha_entrega = input("Ingrese la fecha de entrega de la tarea (dd/mm/aaaa): ")
+        nueva_tarea = cls(nombre_tarea, descripcion, prioridad, estado, materia, fecha_entrega)
+        lista_tareas.append(nueva_tarea)
+        return nueva_tarea
 
 
 #clase hija 2
@@ -57,15 +52,17 @@ class Tarea_evento(Tarea):
         self.lugar = lugar
         #primer método clase hija 2
     def mostrar_tarea(self):
-        super().mostrar_tarea()
-        print(f"Fecha del evento: {self.fecha_evento} \n Lugar: {self.lugar}")
-        print("-".center(50,"-"))
+        super().mostrar_tarea_colegio()
+        print(f"\n Fecha del evento: {self.fecha_evento} \n Lugar: {self.lugar}")
         #segundo método de la clase hija 2
-    def cambiar_estado(self):
-         super().cambiar_estado()
-    #tercer método de la clase hija 2
-    def agregar_tarea(self):
-        super().agregar_tarea()
+    @classmethod
+    def agregar_tarea(cls):
+        nombre_tarea, descripcion, prioridad, estado = super().agregar_tarea()
+        fecha_evento = input("Ingrese la fecha del evento (dd/mm/aaaa): ")
+        lugar = input("Ingrese el lugar del evento: ")
+        nueva_tarea = cls(nombre_tarea, descripcion, prioridad, estado, fecha_evento, lugar)
+        lista_tareas.append(nueva_tarea)
+        return nueva_tarea
 
 #Crear las tareas desde adento del código
 tarea1 = Tarea("Comprar víveres", "Comprar frutas, verduras y leche", "Alta", "Pendiente")
@@ -77,16 +74,18 @@ lista_tareas.append(tarea3)
 
 #Ingresar tareas desde consola
 
+nueva_tarea= "vacio"
+
 while True:
     pregunta= input("¿Desea agregar una nueva tarea? (si/no): ").lower()
     if pregunta == "si":
         pregunta_2= input("¿Qué tipo de tarea desea agregar? (normal/colegio/evento): ").lower()
         if pregunta_2=="normal":
-            nueva_tarea.agregar_tarea(Tarea)
+            Tarea.agregar_tarea()
         elif pregunta_2=="colegio":
-            nueva_tarea.agregar_tarea(Tarea_colegio)
+           Tarea_colegio.agregar_tarea()
         elif pregunta_2=="evento":
-            nueva_tarea.agregar_tarea(Tarea_evento)
+            Tarea_evento.agregar_tarea()
         else:
             print("Opciòn no valida")
     elif pregunta == "no":
@@ -98,3 +97,4 @@ while True:
         else:
             print("FIN")
             break
+
