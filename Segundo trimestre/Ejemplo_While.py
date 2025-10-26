@@ -23,19 +23,3 @@
 #     if x<=0:
 #         break
 #     print("Termino el bucle")
-
-print("ADIVINAR EL NÚMERO ")
-
-while True:
-    adivinar= int(input("Ingresé un número: "))
-    if adivinar==-2:
-     print("Adivinaste el número")
-     break
-
-
-
-
-
-
-
-
