@@ -22,7 +22,7 @@ class Gato extends Animal{
 }
 
 // clase principal para ejecutar este programa
-public class Main{
+public class polimorfismo{
     //metodo que demuestre el polimorfismo
     public static void hacerHablar(Animal animal){
         animal.hablar();

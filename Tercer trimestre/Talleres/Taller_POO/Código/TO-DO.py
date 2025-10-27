@@ -63,13 +63,6 @@ class Tarea_evento(Tarea):
         lista_tareas.append(nueva_tarea) 
 
 
-#Crear las tareas desde adento del código
-tarea2 = Tarea_colegio("Estudiar para el examen", "Repasar los apuntes y hacer ejercicios", "Media", "En progreso", "Matemáticas", "23/04/2024")
-lista_tareas.append(tarea2)
-# corregido: orden (fecha_evento, lugar)
-tarea3 = Tarea_evento("Ir al cumpleaños", "Comprar regalo y asistir al cumpleaños de Ana", "Baja", "Completada", "02/05/2024", "Casa de Ana")
-lista_tareas.append(tarea3)
-
 #Ingresar tareas desde consola
 
 while True:
