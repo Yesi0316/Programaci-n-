@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Tarea",
+            "request": "launch",
+            "mainClass": "Tarea",
+            "projectName": "Programaci-n-_ffe35085"
+        },
+        {
+            "type": "java",
             "name": "polimorfismo",
             "request": "launch",
             "mainClass": "polimorfismo",

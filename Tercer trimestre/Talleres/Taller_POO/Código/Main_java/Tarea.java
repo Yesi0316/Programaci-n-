@@ -51,10 +51,13 @@ class Tarea {  //Clase padre
         System.out.println("Tarea agregada exitosamente.");
         
         return nuevaTarea;
-}
-
     }
 
-// "C:\Program Files\Java\jdk-25\bin\javac.exe"  crear archivos .class terminal
-
-// "C:\Program Files\Java\jdk-25\bin\java.exe"  crear archivos .class terminal
+    // public static void main(String[] args) {
+    //     // Crear una instancia de Tarea usando el método agregarTarea
+    //     Tarea tarea = agregarTarea();
+        
+    //     // Mostrar la tarea creada
+    //     tarea.mostrarTarea();
+    // }
+}
