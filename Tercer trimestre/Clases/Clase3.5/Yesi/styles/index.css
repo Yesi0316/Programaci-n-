@@ -1,0 +1,25 @@
+.FORMULARIO {
+    background-color: white;
+    padding: 100px;
+    border-radius: 20px;
+    text-align: center;
+    border: 2px solid darkblue;
+    width: 400px;
+    margin: 0 auto;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#Titulo {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+table {
+    margin: 0 auto;
+    }
+
+td {
+    padding: 5px;
+    }

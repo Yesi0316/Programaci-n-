@@ -1,16 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">    
-
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>{{titulo}}</title>
-    <link rel="stylesheet" href="/static/styles.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primera pág con Jinja 2 y Flask</title>
+    
 </head>
-
 <body>
- <h1 style="color:blue">{{ titulo }}</h1>
-    <p>!Mi primera página con flask y Jinja 2!</p>
-</body>
+    <div id="Titulo">
+        <header>
+            <h4 style="color: darkblue">MI PRIMER FORMULARIO</h4>
+        </header>
+    </div>
 
+    <form class="FORMULARIO" method="post" action="">
+        <table>
+            <tr>
+                <td><label for="nombre">Nombre:</label></td>
+                <td><input type="text" id="nombre" name="nombre"></td>
+            </tr>
+            <tr>
+                <td><label for="apellido">Apellido:</label></td>
+                <td><input type="text" id="apellido" name="apellido"></td>
+            </tr>
+            <tr>
+                <td><label for="ciudad">Ciudad:</label></td>
+                <td><input type="text" id="ciudad" name="ciudad"></td>
+            </tr>
+            <tr>
+                <td><label for="edad">Edad:</label></td>
+                <td><input type="number" id="edad" name="edad"></td>
+            </tr>
+        </table>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
 </html>
+    
+</body>
+</html>
+
+
