@@ -6,37 +6,130 @@
     <title>Document</title>
 
 <style>
-    
-    {margin:0; padding:0; box-sizing: border-box;}
+
+    * {margin:0; padding:0; box-sizing: border-box;}
+
     body {
         font-family: Arial, sans-serif;
         background-color: #f4f4f4;
         color: #333;
-        padding: 20px; /* Espaciado interno del contenido */
+        padding: 20px;
     }
 
     .container {
-        max-width: 600px; /* Ancho máximo del contenedor o formulario */
-        margin: 0 auto; /* Centrar el contenedor */
-        background-color: #f3f3f3; /* Fondo blanco para el contenedor */
-        padding: 20px; /* Espaciado interno del contenedor */
-        border-radius: 10px; /* Bordes redondeados */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #f3f3f3;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-/*Estilo del titulo*/
-
 h1 {
-    text-align: center; /* Centrar el título */
-    color: #333; /* Color del texto */
-    margin-bottom: 10px; /* Espacio debajo del título */
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
 }
 
+label {
+    display: block;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, textarea{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+button {
+    width: 100px;
+    padding: 10px;
+    background: blueviolet;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
 
 </style>
 
 </head>
 <body>
-    
+
+<div class="container">
+    <h1>Formulario de Usuarios</h1>
+
+    <p>completar el formulario y ahora será un usuario</p>
+
+    <h2>Formulario de usuario</h2>
+
+    <div id="MensajeAlerta" class="Mensaje"></div>
+
+    <form id="contactForm">
+
+        <label for="name">Nombre*</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Correo Electrónico*</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Mensaje*</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Enviar</button>
+
+    </form>
+</div>
+
+<script>
+    /*LOGICA DEL FORMULARIO EN JAVA SCRIPT
+    Este bloque controla lo que pasa cuando el usuario envia el formulario se encarga de mandar los datos al servidor y mostrar los*/
+
+    const form = document.getElementById('contactForm');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Evita recargar la página
+
+        const fformData = {
+            nombre: document.getElementById('name').value,
+            correo: document.getElementById('email').value,
+            mensaje: document.getElementById('message').value
+        };
+
+        console.log('datos a enviar', fformData);
+
+        try {
+            const response = await fetch('/usuarios', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(fformData)
+            });
+
+            const result = await response.json();
+
+            const mensajeAlerta = document.getElementById('MensajeAlerta');
+            mensajeAlerta.innerHTML = result.mensaje || "Datos enviados correctamente";
+            mensajeAlerta.style.color = "green";
+
+        } catch (error) {
+            const mensajeAlerta = document.getElementById('MensajeAlerta');
+            mensajeAlerta.innerHTML = "Error al enviar los datos";
+            mensajeAlerta.style.color = "red";
+        }
+    });
+</script>
+
 </body>
 </html>

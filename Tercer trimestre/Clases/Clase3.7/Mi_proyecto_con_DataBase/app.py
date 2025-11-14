@@ -1,123 +1,128 @@
-import flask from Flask, request, jsonify, return, return_templates #importar flask
-import psycopg2 #importar psycopg2 para conectar a la base de datos PostgreSQL
-from psycopg2.extras import RealDictCursor #importar RealDictCursor para obtener resultados en formato diccionario
-import os #importar os para manejar variables de entorno
-from date time import datetime #importar datetime para manejar fechas y horas
+import flask  #importar flask
+from flask import Flask, request, jsonify, render_template  #importar funciones de flask
+import psycopg2  #importar psycopg2 para conectar a la base de datos PostgreSQL
+from psycopg2.extras import RealDictCursor  #importar RealDictCursor para obtener resultados en formato diccionario
+import os  #importar os para manejar variables de entorno
+from datetime import datetime  #importar datetime para manejar fechas y horas
 
 # Configuración de la aplicación
 app = Flask(__name__)
 
 DB_CONFIG = {
-    'host':'localhost',
-    'database':'mi_base_de_datosMi_proyecto_dataBase',
-    'user':'postgres',
-    'password':'123456',
-    'port': '5432',
+    'host': 'localhost',
+    'database': 'Mi_proyecto_dataBase',
+    'user': 'postgres',
+    'password': '123456',
+    'port': '5432'
 }
 
-def conectar_db(): #crea una  función para conectar con mi base de datos
-    try: #intentar conectar a la base de datos
-        conexion= psycopg2.connect(**DB_CONFIG) #importar la librería psycopg2 y conectar a la base de datos con los parámetros definidos en DB_CONFIG
-        return conexion #Si ocurre un error lo muestra en consola
+def conectar_db():  #crea una función para conectar con mi base de datos
+    try:
+        # Forzar codificación cliente a UTF-8 para evitar UnicodeDecodeError desde libpq
+        os.environ.setdefault('PGCLIENTENCODING', 'utf8')
+
+        # pasar la opción a libpq también (asegura que libpq use UTF8)
+        conexion = psycopg2.connect(options='-c client_encoding=UTF8', **DB_CONFIG)
+        return conexion
+    except UnicodeDecodeError as e:
+        # Mensaje más útil para depuración
+        raise RuntimeError(
+            "UnicodeDecodeError durante la conexión a PostgreSQL. "
+            "Verifique que las credenciales y variables de entorno estén en UTF-8 "
+            "y pruebe a exportar PGCLIENTENCODING=utf8 antes de ejecutar la app."
+        ) from e
     except psycopg2.Error as e:
-        return None #retorna un  mensaje si8 falla la conexion de postgre
-    
-    #Crear la tabla Usuario
+        print("Error al conectar:", e)  #Si ocurre un error lo muestra en consola
+        return None  #retorna None si falla la conexión
+
+#Crear la tabla Usuario
 def crear_tabla_usuario():
-    conexion= conectar_db() #conectar a la base de datos
+    conexion = conectar_db()  #conectar a la base de datos
     if conexion:
-        cursor= conexion.cursor() #crear un cursor para ejecutar consultas
+        cursor = conexion.cursor()  #crear cursor para ejecutar consultas
         cursor.execute("""
-        CREATE TABLE IF NOT EXISTS Usuario (
-            id SERIAL PRIMARY KEY,
-            nombre VARCHAR(100) NOT NULL,
-            email VARCHAR(100) UNIQUE NOT NULL,
-            fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        );
-        """) #crear la tabla Usuario si no existe
-        conexion.commit() #guardar los cambios en la base de datos
-        cursor.close() #cerrar el cursor
-        conexion.close() #cerrar la conexión
+            CREATE TABLE IF NOT EXISTS Usuario (
+                id SERIAL PRIMARY KEY,
+                nombre VARCHAR(100) NOT NULL,
+                email VARCHAR(100) UNIQUE NOT NULL,
+                mensaje VARCHAR(100)
+            );
+        """)  #crear la tabla Usuario si no existe
+        conexion.commit()  #guardar cambios
+        cursor.close()  #cerrar cursor
+        conexion.close()  #cerrar conexión
 
 #Ruta principal del sitio web
 @app.route('/')
 def inicio():
-    return return_templates('index.html') #retorna el template index.html
+    return render_template('index.html')  #retorna el template index.html
 
-#ruta para guardar los datos de una conexion
+#ruta para guardar los datos de un usuario
 @app.route('/guardar_usuario', methods=['POST'])
 def guardar_usuario():
     try:
-        conexion= conectar_db() #conectar a la base de datos
-        if conexion is None:
-            return
-        
-        #obtiene los datos enviados en Json
-
-        datos= request.get_json() #obtener los datos enviados en formato JSON
-        nombre= datos.get('nombre'.strip) #obtener el nombre del usuario
-        email= datos.get('email'.strip) #obtener el email del usuario
-        fecha_creacion= datetime.now() #obtener la fecha y hora actual
-
-    #validar que el nombre y el correo no esten vacíos
-        if not nombre or not email:
-            return jsonify({'mensaje': 'El nombre y el correo son obligatorios'}), 400
-        
-        #Crear un cursor para ejecutar consultas
-
-        cursor= conexion.cursor() #crear un cursor para ejecutar consultas
-        sql_insert= """
-        INSERT INTO Usuario (nombre, email, fecha_creacion)
-        VALUES (%s, %s, %s)
-        RETURNING id;
-        """ #conexion o consulta a la tabla Usuario
-
-        #ejecutar las consultas con los valores recibidos 
-
-        cursor.execute(sql_insert, (nombre, email, fecha_creacion))
-        usuario_id= cursor.fetchone()[0] #obtener el id del usuario insertado
-
-        conexion.commit() #guardar los cambios en la base de datos
-        cursor.close() #cerrar el cursor
-        conexion.close() #cerrar la conexión
-
-        #devuelve un mensaje de exito con el id generado
-        return jsonify({'mensaje': 'Usuario guardado exitosamente', 'usuario_id': usuario_id})
-    except Exception as e:
-        return jsonify({'mensaje': 'Error al guardar el usuario', 'error': str(e)}), 500
-    
-    #Ruta para consultar lo guardado 
-@app.route('/usuarios', methods=['GET'])
-def obtener_usuarios():
-    try:
-        conexion= conectar_db() #conectar a la base de datos
+        conexion = conectar_db()  #conectar a la base de datos
         if conexion is None:
             return jsonify({'mensaje': 'Error de conexión a la base de datos'}), 500
 
-         #crear un cursor para ejecutar consultas
-        
-        cursor= conexion.cursor(cursor_factory= RealDictCursor)#Se obtiene todos los registros
-        cursor.execute("SELECT * FROM Usuario ORDER BY ID_USUARIO DESC;") #consulta para obtener todos los usuarios
+        #obtiene los datos enviados en Json
+        datos = request.get_json()  #obtener datos en formato JSON
+        nombre = datos.get('nombre')  #obtener nombre
+        email = datos.get('email')  #obtener email
+        fecha_creacion = datetime.now()  #obtener fecha y hora actual
 
-        #Del más reciente al mas antiguo
-        usuarios= cursor.fetchall() #obtener todos los registros
+        #validar datos obligatorios
+        if not nombre or not email:
+            return jsonify({'mensaje': 'El nombre y el correo son obligatorios'}), 400
 
-        cursor.close() #cerrar el cursor
-        conexion.close() #cerrar la conexión
+        #crear cursor para ejecutar consultas
+        cursor = conexion.cursor()
 
-        return jsonify(usuarios) #retornar los usuarios en formato JSON
+        sql_insert = """
+            INSERT INTO Usuario (nombre, email, fecha_creacion)
+            VALUES (%s, %s, %s)
+            RETURNING id;
+        """  #consulta SQL para insertar usuario
+
+        cursor.execute(sql_insert, (nombre, email, fecha_creacion))
+        usuario_id = cursor.fetchone()[0]  #obtener id generado
+
+        conexion.commit()  #guardar cambios
+        cursor.close()  #cerrar cursor
+        conexion.close()  #cerrar conexión
+
+        return jsonify({'mensaje': 'Usuario guardado exitosamente', 'usuario_id': usuario_id})
+
+    except Exception as e:
+        return jsonify({'mensaje': 'Error al guardar el usuario', 'error': str(e)}), 500
+
+#Ruta para consultar lo guardado
+@app.route('/usuarios', methods=['GET'])
+def obtener_usuarios():
+    try:
+        conexion = conectar_db()  #conectar a la base de datos
+        if conexion is None:
+            return jsonify({'mensaje': 'Error de conexión a la base de datos'}), 500
+
+        cursor = conexion.cursor(cursor_factory=RealDictCursor)  #obtener resultados como diccionario
+        cursor.execute("SELECT * FROM Usuario ORDER BY id DESC;")  #consulta usuarios
+
+        usuarios = cursor.fetchall()  #obtener registros
+
+        #Formatear la fecha de creación para que sea legible
+        for u in usuarios:
+            if u['fecha_creacion']:
+                u['fecha_creacion'] = u['fecha_creacion'].strftime('%Y-%m-%d %H:%M:%S')
+
+        cursor.close()  #cerrar cursor
+        conexion.close()  #cerrar conexión
+
+        return jsonify(usuarios), 200
+
     except Exception as e:
         return jsonify({'mensaje': 'Error al obtener los usuarios', 'error': str(e)}), 500
-    
-    #Formatear la fecha de creación para que sea legible 
-        for usuarios in usuarios:
-            if usuarios['fecha_creacion']:
-                usuarios['fecha_creacion'] =usuarios['fecha_creacion'].strftime('%Y-%m-%d %H:%M:%S')
 
-        return jsonify(usuarios),200 #retornar los usuarios en formato JSON
-    
-    except Exception as e:
-        print(f"Error al obtener los usuarios: {e}")
-        return jsonify({'mensaje': 'Error al obtener los usuarios', 'error': str(e)}), 500
-    
-
+#inicializar servidor
+if __name__ == "__main__":
+    crear_tabla_usuario()  #crear tabla si no existe
+    app.run(debug=True)
