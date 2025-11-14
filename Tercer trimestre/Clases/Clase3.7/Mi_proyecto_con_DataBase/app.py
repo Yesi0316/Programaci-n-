@@ -82,4 +82,42 @@ def guardar_usuario():
         conexion.close() #cerrar la conexión
 
         #devuelve un mensaje de exito con el id generado
-        return jsonify({'mensaje': 'Usuario guardado exitosamente', 'usuario_id': usuario_id}), 
+        return jsonify({'mensaje': 'Usuario guardado exitosamente', 'usuario_id': usuario_id})
+    except Exception as e:
+        return jsonify({'mensaje': 'Error al guardar el usuario', 'error': str(e)}), 500
+    
+    #Ruta para consultar lo guardado 
+@app.route('/usuarios', methods=['GET'])
+def obtener_usuarios():
+    try:
+        conexion= conectar_db() #conectar a la base de datos
+        if conexion is None:
+            return jsonify({'mensaje': 'Error de conexión a la base de datos'}), 500
+
+         #crear un cursor para ejecutar consultas
+        
+        cursor= conexion.cursor(cursor_factory= RealDictCursor)#Se obtiene todos los registros
+        cursor.execute("SELECT * FROM Usuario ORDER BY ID_USUARIO DESC;") #consulta para obtener todos los usuarios
+
+        #Del más reciente al mas antiguo
+        usuarios= cursor.fetchall() #obtener todos los registros
+
+        cursor.close() #cerrar el cursor
+        conexion.close() #cerrar la conexión
+
+        return jsonify(usuarios) #retornar los usuarios en formato JSON
+    except Exception as e:
+        return jsonify({'mensaje': 'Error al obtener los usuarios', 'error': str(e)}), 500
+    
+    #Formatear la fecha de creación para que sea legible 
+        for usuarios in usuarios:
+            if usuarios['fecha_creacion']:
+                usuarios['fecha_creacion'] =usuarios['fecha_creacion'].strftime('%Y-%m-%d %H:%M:%S')
+
+        return jsonify(usuarios),200 #retornar los usuarios en formato JSON
+    
+    except Exception as e:
+        print(f"Error al obtener los usuarios: {e}")
+        return jsonify({'mensaje': 'Error al obtener los usuarios', 'error': str(e)}), 500
+    
+
